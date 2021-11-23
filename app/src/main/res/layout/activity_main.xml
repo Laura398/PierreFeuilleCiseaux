@@ -7,8 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valeur : "
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/ciseaux"
+        app:layout_constraintStart_toStartOf="@+id/ciseaux"
+        app:layout_constraintTop_toBottomOf="@+id/ciseaux" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom : "
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <EditText
-        android:id="@+id/setName"
+        android:id="@+id/editName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -18,43 +45,30 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="217dp" />
 
-    <EditText
-        android:id="@+id/setSign"
+    <Button
+        android:id="@+id/pierre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setName" />
+        android:text="Pierre"
+        app:layout_constraintEnd_toEndOf="@+id/editName"
+        app:layout_constraintStart_toStartOf="@+id/editName"
+        app:layout_constraintTop_toBottomOf="@+id/editName" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/ciseaux"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
-        app:layout_constraintEnd_toEndOf="@+id/setSign"
-        app:layout_constraintStart_toStartOf="@+id/setSign"
-        app:layout_constraintTop_toBottomOf="@+id/setSign" />
+        android:text="Ciseaux"
+        app:layout_constraintEnd_toEndOf="@+id/feuille"
+        app:layout_constraintStart_toStartOf="@+id/feuille"
+        app:layout_constraintTop_toBottomOf="@+id/feuille" />
 
-    <TextView
-        android:id="@+id/getSign"
+    <Button
+        android:id="@+id/feuille"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Signe : "
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <TextView
-        android:id="@+id/getName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nom : "
-        app:layout_constraintEnd_toEndOf="@+id/getSign"
-        app:layout_constraintStart_toStartOf="@+id/getSign"
-        app:layout_constraintTop_toBottomOf="@+id/getSign" />
-
+        android:text="Feuille"
+        app:layout_constraintEnd_toEndOf="@+id/pierre"
+        app:layout_constraintStart_toStartOf="@+id/pierre"
+        app:layout_constraintTop_toBottomOf="@+id/pierre" />
 </androidx.constraintlayout.widget.ConstraintLayout>

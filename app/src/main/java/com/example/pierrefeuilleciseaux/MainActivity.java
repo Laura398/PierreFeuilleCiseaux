@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button save = findViewById(R.id.button);
-        final String[] nameVar = new String[1];
+        Button pierre = findViewById(R.id.pierre);
+        Button feuille = findViewById(R.id.feuille);
+        Button ciseaux = findViewById(R.id.ciseaux);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pierre-feuille-ciseaux-a00d3-default-rtdb.europe-west1.firebasedatabase.app/");
         DatabaseReference name = database.getReference("Name");
@@ -36,9 +37,8 @@ public class MainActivity extends AppCompatActivity {
                 // whenever data at this location is updated.
                 String nameValue = dataSnapshot.getValue(String.class);
                 Log.d("APPX", "Value is: " + nameValue);
-                TextView getName = findViewById(R.id.getName);
+                TextView getName = findViewById(R.id.textView);
                 getName.setText("Joueur : " + nameValue);
-                nameVar[0] = nameValue;
             }
             @Override
             public void onCancelled(DatabaseError error) {
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 // whenever data at this location is updated.
                 String signValue = dataSnapshot.getValue(String.class);
                 Log.d("APPX", "Value is: " + signValue);
-                TextView getSign = findViewById(R.id.getSign);
+                TextView getSign = findViewById(R.id.textView2);
                 getSign.setText("Signe : " + signValue);
             }
             @Override
@@ -64,18 +64,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        save.setOnClickListener(new View.OnClickListener() {
+        pierre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView getName = findViewById(R.id.getName);
-                EditText setName = findViewById(R.id.setName);
-                EditText setSign = findViewById(R.id.setSign);
-                if(nameVar[0].equals(getName)) {
-                    //
-                } else {
-                    name.setValue(setName.getText().toString(), setSign.getText().toString());
-                }
-                sign.setValue(setSign.getText().toString());
+                TextView textView = findViewById(R.id.editName);
+                name.setValue(textView.getText().toString());
+                sign.setValue("Pierre");
+
+            }
+        });
+
+        feuille.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView textView = findViewById(R.id.editName);
+                name.setValue(textView.getText().toString());
+                sign.setValue("Feuille");
+
+            }
+        });
+
+        ciseaux.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView textView = findViewById(R.id.editName);
+                name.setValue(textView.getText().toString());
+                sign.setValue("Ciseaux");
+
             }
         });
 
