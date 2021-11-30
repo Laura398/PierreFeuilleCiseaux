@@ -15,6 +15,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -27,27 +30,12 @@ public class MainActivity extends AppCompatActivity {
         Button ciseaux = findViewById(R.id.ciseaux);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pierre-feuille-ciseaux-a00d3-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference name = database.getReference("Name");
-        DatabaseReference sign = database.getReference("Sign");
+        DatabaseReference player1 = database.getReference("Joueur 1");
+        DatabaseReference player2 = database.getReference("Joueur 2");
 
-        name.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String nameValue = dataSnapshot.getValue(String.class);
-                Log.d("APPX", "Value is: " + nameValue);
-                TextView getName = findViewById(R.id.textView);
-                getName.setText("Joueur : " + nameValue);
-            }
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("APPX", "Failed to read value.", error.toException());
-            }
-        });
 
-        sign.addValueEventListener(new ValueEventListener() {
+
+        player1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -55,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 String signValue = dataSnapshot.getValue(String.class);
                 Log.d("APPX", "Value is: " + signValue);
                 TextView getSign = findViewById(R.id.textView2);
+                TextView getName = findViewById(R.id.textView);
                 getSign.setText("Signe : " + signValue);
+                getName.setText("Joueur 1");
             }
             @Override
             public void onCancelled(DatabaseError error) {
@@ -67,9 +57,7 @@ public class MainActivity extends AppCompatActivity {
         pierre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView textView = findViewById(R.id.editName);
-                name.setValue(textView.getText().toString());
-                sign.setValue("Pierre");
+                player1.setValue("Pierre");
 
             }
         });
@@ -77,9 +65,7 @@ public class MainActivity extends AppCompatActivity {
         feuille.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView textView = findViewById(R.id.editName);
-                name.setValue(textView.getText().toString());
-                sign.setValue("Feuille");
+                player1.setValue("Feuille");
 
             }
         });
@@ -87,9 +73,7 @@ public class MainActivity extends AppCompatActivity {
         ciseaux.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView textView = findViewById(R.id.editName);
-                name.setValue(textView.getText().toString());
-                sign.setValue("Ciseaux");
+                player1.setValue("Ciseaux");
 
             }
         });
