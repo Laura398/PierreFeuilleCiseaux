@@ -2,7 +2,10 @@ package com.example.pierrefeuilleciseaux;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,60 +28,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button pierre = findViewById(R.id.pierre);
-        Button feuille = findViewById(R.id.feuille);
-        Button ciseaux = findViewById(R.id.ciseaux);
+        Button save = findViewById(R.id.button);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance("https://pierre-feuille-ciseaux-a00d3-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference player1 = database.getReference("Joueur 1");
-        DatabaseReference player2 = database.getReference("Joueur 2");
-
-
-
-        player1.addValueEventListener(new ValueEventListener() {
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String signValue = dataSnapshot.getValue(String.class);
-                Log.d("APPX", "Value is: " + signValue);
-                TextView getSign = findViewById(R.id.textView2);
-                TextView getName = findViewById(R.id.textView);
-                getSign.setText("Signe : " + signValue);
-                getName.setText("Joueur 1");
-            }
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("APPX", "Failed to read value.", error.toException());
+            public void onClick(View view) {
+                EditText name = findViewById(R.id.name);
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("playerName", "" + name.getText());
+                editor.commit();
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
             }
         });
-
-        pierre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player1.setValue("Pierre");
-
-            }
-        });
-
-        feuille.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player1.setValue("Feuille");
-
-            }
-        });
-
-        ciseaux.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player1.setValue("Ciseaux");
-
-            }
-        });
-
-
 
 
 

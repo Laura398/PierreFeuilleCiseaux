@@ -7,32 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Valeur : "
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/ciseaux"
-        app:layout_constraintStart_toStartOf="@+id/ciseaux"
-        app:layout_constraintTop_toBottomOf="@+id/ciseaux" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nom : "
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/chooseName"
@@ -45,54 +19,29 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="217dp" />
 
-    <Button
-        android:id="@+id/name1"
+    <EditText
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Joueur 1"
+        android:text="Name"
         app:layout_constraintEnd_toEndOf="@+id/chooseName"
         app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="@+id/chooseName"
         app:layout_constraintTop_toBottomOf="@+id/chooseName" />
 
     <Button
-        android:id="@+id/name2"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Joueur 2"
-        app:layout_constraintEnd_toEndOf="@+id/name1"
+        android:text="Confirmer"
+        app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/name1"
-        app:layout_constraintTop_toBottomOf="@+id/name1" />
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
-    <Button
-        android:id="@+id/pierre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pierre"
-        app:layout_constraintEnd_toEndOf="@+id/name2"
-        app:layout_constraintStart_toStartOf="@+id/name2"
-        app:layout_constraintTop_toBottomOf="@+id/name2" />
 
-    <Button
-        android:id="@+id/ciseaux"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ciseaux"
-        app:layout_constraintEnd_toEndOf="@+id/feuille"
-        app:layout_constraintStart_toStartOf="@+id/feuille"
-        app:layout_constraintTop_toBottomOf="@+id/feuille" />
-
-    <Button
-        android:id="@+id/feuille"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Feuille"
-        app:layout_constraintEnd_toEndOf="@+id/pierre"
-        app:layout_constraintStart_toStartOf="@+id/pierre"
-        app:layout_constraintTop_toBottomOf="@+id/pierre" />
 </androidx.constraintlayout.widget.ConstraintLayout>

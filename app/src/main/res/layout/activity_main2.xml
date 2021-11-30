@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valeur : "
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/ciseaux"
+        app:layout_constraintStart_toStartOf="@+id/ciseaux"
+        app:layout_constraintTop_toBottomOf="@+id/ciseaux" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom : "
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/pierre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pierre"
+        app:layout_constraintEnd_toEndOf="@+id/chooseSign"
+        app:layout_constraintStart_toStartOf="@+id/chooseSign"
+        app:layout_constraintTop_toBottomOf="@+id/chooseSign" />
+
+    <Button
+        android:id="@+id/ciseaux"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ciseaux"
+        app:layout_constraintEnd_toEndOf="@+id/feuille"
+        app:layout_constraintStart_toStartOf="@+id/feuille"
+        app:layout_constraintTop_toBottomOf="@+id/feuille" />
+
+    <Button
+        android:id="@+id/feuille"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feuille"
+        app:layout_constraintEnd_toEndOf="@+id/pierre"
+        app:layout_constraintStart_toStartOf="@+id/pierre"
+        app:layout_constraintTop_toBottomOf="@+id/pierre" />
+
+    <TextView
+        android:id="@+id/chooseSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Choisis un signe :"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="217dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
