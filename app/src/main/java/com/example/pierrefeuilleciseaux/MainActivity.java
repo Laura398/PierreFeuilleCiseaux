@@ -28,12 +28,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String name = prefs.getString("playerName", null);
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://pierre-feuille-ciseaux-a00d3-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference player = database.getReference("" + name);
+
+        if (name != null) {
+            if (name.toString() != player.getKey().toString()) {
+                EditText test = findViewById(R.id.name);
+                test.setText(player.getKey().toString() + name.toString());
+            } else {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        }
+
         Button save = findViewById(R.id.button);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditText name = findViewById(R.id.name);
+                player.removeValue();
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("playerName", "" + name.getText());
