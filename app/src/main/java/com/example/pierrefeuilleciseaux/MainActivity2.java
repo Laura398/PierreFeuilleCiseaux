@@ -20,6 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity2 extends AppCompatActivity {
 
     @Override
@@ -51,10 +54,10 @@ public class MainActivity2 extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
-                    String signValue = dataSnapshot.getValue(String.class);
-                    Log.d("APPX", "Value is: " + signValue);
+                    String key = dataSnapshot.getKey();
+                    String value = dataSnapshot.getValue(String.class);
                     TextView getSign = findViewById(R.id.textView);
-                    getSign.setText("Signe : " + signValue);
+                    getSign.setText(key + " : " + value);
                 }
                 @Override
                 public void onCancelled(DatabaseError error) {
@@ -66,7 +69,10 @@ public class MainActivity2 extends AppCompatActivity {
             pierre.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    player.setValue("Pierre");
+                    ArrayList<String> pierreList = new ArrayList<String>();
+                    pierreList.add("Pierre");
+                    pierreList.add("Clicked");
+                    player.setValue(pierreList);
 
                 }
             });
