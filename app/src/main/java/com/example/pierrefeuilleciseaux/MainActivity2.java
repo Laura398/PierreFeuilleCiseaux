@@ -177,13 +177,16 @@ public class MainActivity2 extends AppCompatActivity {
                                 if (statut.equals("Clicked")) {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
                                     startActivity(intent);
+                                    finish();
                                 } else {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                     startActivity(intent);
+                                    finish();
                                 }
                             } else {
                                 Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                 startActivity(intent);
+                                finish();
                             }
                         }
 
@@ -221,13 +224,16 @@ public class MainActivity2 extends AppCompatActivity {
                                 if (statut.equals("Clicked")) {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
                                     startActivity(intent);
+                                    finish();
                                 } else {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                     startActivity(intent);
+                                    finish();
                                 }
                             } else {
                                 Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                 startActivity(intent);
+                                finish();
                             }
                         }
 
@@ -266,13 +272,16 @@ public class MainActivity2 extends AppCompatActivity {
                                 if (statut.equals("Clicked")) {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
                                     startActivity(intent);
+                                    finish();
                                 } else {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                     startActivity(intent);
+                                    finish();
                                 }
                             } else {
                                 Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                 startActivity(intent);
+                                finish();
                             }
                         }
 
@@ -297,6 +306,7 @@ public class MainActivity2 extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity2.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -327,6 +337,7 @@ public class MainActivity2 extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity2.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
+                        finish();
                         dialog.dismiss();
                     }
                 }).setNegativeButton("Annuler", new DialogInterface.OnClickListener() {

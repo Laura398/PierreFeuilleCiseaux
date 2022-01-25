@@ -63,16 +63,6 @@ public class MainActivity4 extends AppCompatActivity {
 
                 textNameP1.setText(playerName);
                 textScoreP1.setText(scoreP1.toString());
-
-                ArrayList signList = new ArrayList();
-                signList.add(0, "" + numberP1);
-                signList.add(1, "" + nameP1);
-                signList.add(2, "Not Clicked");
-                signList.add(3, "");
-                signList.add(4, 0);
-                signList.add(5, 0);
-                player.setValue(signList);
-
             }
 
             @Override
@@ -85,12 +75,8 @@ public class MainActivity4 extends AppCompatActivity {
         other.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String numberP2 = dataSnapshot.child("0").getValue(String.class);
                 nameP2 = dataSnapshot.child("1").getValue(String.class);
-                String statutP2 = dataSnapshot.child("2").getValue(String.class);
-                String signP2inDB = dataSnapshot.child("3").getValue(String.class);
                 scoreP2 = dataSnapshot.child("4").getValue(Integer.class);
-                Integer playRun = dataSnapshot.child("5").getValue(Integer.class);
 
                 TextView textNameP2 = findViewById(R.id.nameP2);
                 TextView textScoreP2 = findViewById(R.id.scoreP2);
@@ -111,9 +97,6 @@ public class MainActivity4 extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Integer myScore = dataSnapshot.child("" + playerName).child("" + nameP2).child("" + playerName).getValue(Integer.class);
-                Integer otherScore = dataSnapshot.child("" + playerName).child("" + nameP2).child("" + nameP2).getValue(Integer.class);
-
-                TextView textNameP2 = findViewById(R.id.nameP2);
 
                 if (scoreP1 > scoreP2) {
                     if (myScore != null) {
@@ -159,6 +142,7 @@ public class MainActivity4 extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity4.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -167,6 +151,7 @@ public class MainActivity4 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity4.this, MainActivity2.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -193,6 +178,7 @@ public class MainActivity4 extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity4.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
+                        finish();
                         dialog.dismiss();
                     }
                 }).setNegativeButton("Annuler", new DialogInterface.OnClickListener() {

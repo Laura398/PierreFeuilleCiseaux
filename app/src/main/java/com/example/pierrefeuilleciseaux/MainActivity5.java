@@ -38,6 +38,7 @@ public class MainActivity5 extends AppCompatActivity {
                     if (statut.equals("Clicked")) {
                         Intent intent = new Intent(MainActivity5.this, MainActivity3.class);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }

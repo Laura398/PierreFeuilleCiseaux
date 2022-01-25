@@ -76,15 +76,6 @@ public class MainActivity3 extends AppCompatActivity {
                     signP1.setImageResource(imgSkip);
                 }
 
-                ArrayList signList = new ArrayList();
-                signList.add(0, "" + number);
-                signList.add(1, "" + nameP1);
-                signList.add(2, "Not Clicked");
-                signList.add(3, "");
-                signList.add(4, score1);
-                signList.add(5, playRun);
-                player.setValue(signList);
-
                 other.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -117,145 +108,41 @@ public class MainActivity3 extends AppCompatActivity {
                         if (signP1inDB.equals("Pierre")) {
                             if (signP2inDB.equals("Pierre")) {
                                 textView.setText("Draw");
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             } else if (signP2inDB.equals("Feuille")) {
                                 textView.setText("Loose");
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             } else if (signP2inDB.equals("Ciseaux")) {
                                 textView.setText("Win");
                                 scoreP1 +=1;
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             } else {
                                 textView.setText("Win");
                                 scoreP1 +=1;
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             }
                         } else if (signP1inDB.equals("Feuille")) {
                             if (signP2inDB.equals("Pierre")) {
                                 textView.setText("Win");
                                 scoreP1 +=1;
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             } else if (signP2inDB.equals("Feuille")) {
                                 textView.setText("Draw");
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             } else if (signP2inDB.equals("Ciseaux")) {
                                 textView.setText("Loose");
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             } else {
                                 textView.setText("Win");
                                 scoreP1 +=1;
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             }
                         } else if (signP1inDB.equals("Ciseaux")) {
                             if (signP2inDB.equals("Pierre")) {
                                 textView.setText("Loose");
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             } else if (signP2inDB.equals("Feuille")) {
                                 textView.setText("Win");
                                 scoreP1 +=1;
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             } else if (signP2inDB.equals("Ciseaux")) {
                                 textView.setText("Draw");
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             } else {
                                 textView.setText("Win");
                                 scoreP1 +=1;
-                                ArrayList signList = new ArrayList();
-                                signList.add(0, "" + numberP1);
-                                signList.add(1, "" + nameP1);
-                                signList.add(2, "Not Clicked");
-                                signList.add(3, "");
-                                signList.add(4, scoreP1);
-                                signList.add(5, playRun);
-                                player.setValue(signList);
                             }
                         } else {
                             textView.setText("Loose");
-                            ArrayList signList = new ArrayList();
-                            signList.add(0, "" + numberP1);
-                            signList.add(1, "" + nameP1);
-                            signList.add(2, "Not Clicked");
-                            signList.add(3, "");
-                            signList.add(4, scoreP1);
-                            signList.add(5, playRun);
-                            player.setValue(signList);
                         }
 
                     }
@@ -280,11 +167,61 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (playRun.equals(3)) {
+                    player.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // This method is called once with the initial value and again
+                            // whenever data at this location is updated.
+                            String number = dataSnapshot.child("0").getValue(String.class);
+                            String name = dataSnapshot.child("1").getValue(String.class);
+                            String sign = dataSnapshot.child("3").getValue(String.class);
+                            ArrayList signList = new ArrayList();
+                            signList.add(0, "" + number);
+                            signList.add(1, "" + name);
+                            signList.add(2, "Not Clicked");
+                            signList.add(3, "" + sign);
+                            signList.add(4, 0);
+                            signList.add(5, 0);
+                            player.setValue(signList);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            Log.w("APPX", "Failed to read value.", error.toException());
+                        }
+                    });
                     Intent intent = new Intent(MainActivity3.this, MainActivity4.class);
                     startActivity(intent);
+                    finish();
                 } else {
+                    player.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // This method is called once with the initial value and again
+                            // whenever data at this location is updated.
+                            String number = dataSnapshot.child("0").getValue(String.class);
+                            String name = dataSnapshot.child("1").getValue(String.class);
+                            String sign = dataSnapshot.child("3").getValue(String.class);
+                            ArrayList signList = new ArrayList();
+                            signList.add(0, "" + number);
+                            signList.add(1, "" + name);
+                            signList.add(2, "Not Clicked");
+                            signList.add(3, "" + sign);
+                            signList.add(4, scoreP1);
+                            signList.add(5, playRun);
+                            player.setValue(signList);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            Log.w("APPX", "Failed to read value.", error.toException());
+                        }
+                    });
                     Intent intent = new Intent(MainActivity3.this, MainActivity2.class);
                     startActivity(intent);
+                    finish();
                 }
 
             }
@@ -312,6 +249,7 @@ public class MainActivity3 extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity3.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
+                        finish();
                         dialog.dismiss();
                     }
                 }).setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
