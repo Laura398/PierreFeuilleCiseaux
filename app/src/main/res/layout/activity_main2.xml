@@ -7,60 +7,112 @@
     tools:context=".MainActivity2">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Valeur : "
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/ciseaux"
-        app:layout_constraintStart_toStartOf="@+id/ciseaux"
-        app:layout_constraintTop_toBottomOf="@+id/ciseaux" />
+        android:id="@+id/nameP1"
+        android:layout_width="41dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Vous"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nom : "
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:id="@+id/nameP2"
+        android:layout_width="75dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Adversaire"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/pierre"
+    <TextView
+        android:id="@+id/scoreP1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pierre"
-        app:layout_constraintEnd_toEndOf="@+id/chooseSign"
-        app:layout_constraintStart_toStartOf="@+id/chooseSign"
-        app:layout_constraintTop_toBottomOf="@+id/chooseSign" />
+        android:text="0"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/nameP1"
+        app:layout_constraintStart_toStartOf="@+id/nameP1"
+        app:layout_constraintTop_toBottomOf="@+id/nameP1" />
 
-    <Button
-        android:id="@+id/ciseaux"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ciseaux"
-        app:layout_constraintEnd_toEndOf="@+id/feuille"
-        app:layout_constraintStart_toStartOf="@+id/feuille"
-        app:layout_constraintTop_toBottomOf="@+id/feuille" />
 
-    <Button
-        android:id="@+id/feuille"
+    <TextView
+        android:id="@+id/scoreP2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Feuille"
-        app:layout_constraintEnd_toEndOf="@+id/pierre"
-        app:layout_constraintStart_toStartOf="@+id/pierre"
-        app:layout_constraintTop_toBottomOf="@+id/pierre" />
+        android:text="0"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/nameP2"
+        app:layout_constraintStart_toStartOf="@+id/nameP2"
+        app:layout_constraintTop_toBottomOf="@+id/nameP2" />
 
     <TextView
         android:id="@+id/chooseSign"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="58dp"
+        android:layout_height="19dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Choisis un signe :"
+        android:text="Choose :"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="217dp" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ciseaux"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ciseaux100"
+        tools:layout_editor_absoluteX="168dp"
+        tools:layout_editor_absoluteY="111dp"
+        app:layout_constraintEnd_toEndOf="@+id/feuille"
+        app:layout_constraintStart_toStartOf="@+id/feuille"
+        app:layout_constraintTop_toBottomOf="@+id/feuille"/>
+
+    <ImageButton
+        android:id="@+id/feuille"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/pierre"
+        app:layout_constraintStart_toStartOf="@+id/pierre"
+        app:layout_constraintTop_toBottomOf="@+id/pierre"
+        app:srcCompat="@drawable/feuille100" />
+
+    <ImageButton
+        android:id="@+id/pierre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pierre100"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="134dp"
+        app:layout_constraintEnd_toEndOf="@+id/chooseSign"
+        app:layout_constraintStart_toStartOf="@+id/chooseSign"
+        app:layout_constraintTop_toBottomOf="@+id/chooseSign"/>
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Timer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

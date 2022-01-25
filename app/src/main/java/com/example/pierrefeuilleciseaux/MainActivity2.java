@@ -2,63 +2,149 @@ package com.example.pierrefeuilleciseaux;
 
 import static android.content.ContentValues.TAG;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.TargetApi;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class MainActivity2 extends AppCompatActivity {
+    Integer playRun;
+    public int counter = 10;
+    @TargetApi(Build.VERSION_CODES.O)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        final TextView textView = findViewById(R.id.timer);
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String name = prefs.getString("playerName", null);
-        if (name != null) {
-            TextView getName = findViewById(R.id.textView2);
-            getName.setText(name);
-        } else {
-            TextView getName = findViewById(R.id.textView2);
-            getName.setText("Joueur : " + name);
+        String playerName = prefs.getString("playerName", null);
+        String playerNumber = prefs.getString("playerNumber", null);
+        String otherNumber = prefs.getString("otherNumber", null);
+        String number = prefs.getString("number", null);
+        if (playerName != null) {
+            TextView getNameP1 = findViewById(R.id.nameP1);
+            getNameP1.setText(playerName);
         }
 
-        Button pierre = findViewById(R.id.pierre);
-        Button feuille = findViewById(R.id.feuille);
-        Button ciseaux = findViewById(R.id.ciseaux);
+        ImageButton pierre = findViewById(R.id.pierre);
+        ImageButton feuille = findViewById(R.id.feuille);
+        ImageButton ciseaux = findViewById(R.id.ciseaux);
+        Button back = findViewById(R.id.back);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pierre-feuille-ciseaux-a00d3-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference player = database.getReference("" + name);
+        DatabaseReference player = database.getReference("" + playerNumber);
+        DatabaseReference other = database.getReference("" + otherNumber);
 
-        if (name != null) {
+        final Integer[] scoreP1 = new Integer[1];
+        final Integer[] scoreP2 = new Integer[1];
+
+        final String[] statutP1 = new String[1];
+        final String[] statutP2 = new String[1];
+
+        CountDownTimer yourCountDownTimer = new CountDownTimer(10000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                textView.setText(String.valueOf(counter));
+                counter--;
+            }
+            @Override
+            public void onFinish() {
+                if (playerName != null) {
+                    ArrayList signList = new ArrayList();
+                    signList.add(0, "" + number);
+                    signList.add(1, "" + playerName);
+                    signList.add(2, "Clicked");
+                    signList.add(3, "");
+                    signList.add(4, scoreP1[0]);
+                    signList.add(5, playRun);
+                    player.setValue(signList);
+                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                    startActivity(intent);
+                }
+            }
+        }.start();
+
+        if (playerName != null) {
 
             player.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
-                    String key = dataSnapshot.getKey();
-                    String value = dataSnapshot.getValue(String.class);
-                    TextView getSign = findViewById(R.id.textView);
-                    getSign.setText(key + " : " + value);
+                    String number = dataSnapshot.child("0").getValue(String.class);
+                    String name = dataSnapshot.child("1").getValue(String.class);
+                    statutP1[0] = dataSnapshot.child("2").getValue(String.class);
+                    String sign = dataSnapshot.child("3").getValue(String.class);
+                    scoreP1[0] = dataSnapshot.child("4").getValue(Integer.class);
+                    playRun = dataSnapshot.child("5").getValue(Integer.class);
+                    TextView getScoreP1 = findViewById(R.id.scoreP1);
+
+                    if (scoreP1[0] != null) {
+                        getScoreP1.setText(scoreP1[0].toString());
+                    }
+
                 }
+
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.w("APPX", "Failed to read value.", error.toException());
+                }
+            });
+
+            other.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    String name = dataSnapshot.child("1").getValue(String.class);
+                    statutP2[0] = dataSnapshot.child("2").getValue(String.class);
+                    String sign = dataSnapshot.child("3").getValue(String.class);
+                    scoreP2[0] = dataSnapshot.child("4").getValue(Integer.class);
+                    if (name != null) {
+                        TextView getNameP2 = findViewById(R.id.nameP2);
+                        getNameP2.setText(name);
+                        TextView getScoreP2 = findViewById(R.id.scoreP2);
+                        getScoreP2.setText(scoreP2[0].toString());
+                    }
+                }
+
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Failed to read value
@@ -69,10 +155,17 @@ public class MainActivity2 extends AppCompatActivity {
             pierre.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ArrayList<String> pierreList = new ArrayList<String>();
-                    pierreList.add("Pierre");
-                    pierreList.add("Clicked");
-                    player.setValue(pierreList);
+                    ArrayList signList = new ArrayList();
+                    signList.add(0, "" + number);
+                    signList.add(1, "" + playerName);
+                    signList.add(2, "Clicked");
+                    signList.add(3, "Pierre");
+                    signList.add(4, scoreP1[0]);
+                    signList.add(5, playRun);
+                    player.setValue(signList);
+                    yourCountDownTimer.cancel();
+                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                    startActivity(intent);
 
                 }
             });
@@ -80,7 +173,17 @@ public class MainActivity2 extends AppCompatActivity {
             feuille.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    player.setValue("Feuille");
+                    ArrayList signList = new ArrayList();
+                    signList.add(0, "" + number);
+                    signList.add(1, "" + playerName);
+                    signList.add(2, "Clicked");
+                    signList.add(3, "Feuille");
+                    signList.add(4, scoreP1[0]);
+                    signList.add(5, playRun);
+                    player.setValue(signList);
+                    yourCountDownTimer.cancel();
+                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                    startActivity(intent);
 
                 }
             });
@@ -88,23 +191,47 @@ public class MainActivity2 extends AppCompatActivity {
             ciseaux.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    player.setValue("Ciseaux");
-
+                    ArrayList signList = new ArrayList();
+                    signList.add(0, "" + number);
+                    signList.add(1, "" + playerName);
+                    signList.add(2, "Clicked");
+                    signList.add(3, "Ciseaux");
+                    signList.add(4, scoreP1[0]);
+                    signList.add(5, playRun);
+                    player.setValue(signList);
+                    yourCountDownTimer.cancel();
+                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                    startActivity(intent);
                 }
             });
-        } else {
-            TextView getName = findViewById(R.id.textView2);
-            getName.setText("Joueur : " + name);
+
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    player.removeValue();
+                    prefs.edit().remove("playerName").commit();
+                    prefs.edit().remove("playerNumber").commit();
+                    prefs.edit().remove("otherNumber").commit();
+                    prefs.edit().remove("number").commit();
+                    yourCountDownTimer.cancel();
+                    Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            });
+
+
+
         }
     }
 
     @Override
     public void onBackPressed() {
-
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String name = prefs.getString("playerName", null);
+        String playerNumber = prefs.getString("playerNumber", null);
+
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pierre-feuille-ciseaux-a00d3-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference player = database.getReference("" + name);
+        DatabaseReference player = database.getReference("" + playerNumber);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Voulez-vous vraiment quitter ? Vos informations vont être perdues.")
@@ -112,7 +239,14 @@ public class MainActivity2 extends AppCompatActivity {
                 .setPositiveButton("Quitter", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         player.removeValue();
-                        System.exit(0);
+                        prefs.edit().remove("playerName").commit();
+                        prefs.edit().remove("playerNumber").commit();
+                        prefs.edit().remove("otherNumber").commit();
+                        prefs.edit().remove("number").commit();
+                        // yourCountDownTimer.cancel();
+                        Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                         dialog.dismiss();
                     }
                 }).setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
