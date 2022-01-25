@@ -76,28 +76,28 @@ public class MainActivity2 extends AppCompatActivity {
         final String[] statutP1 = new String[1];
         final String[] statutP2 = new String[1];
 
-        CountDownTimer yourCountDownTimer = new CountDownTimer(10000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                textView.setText(String.valueOf(counter));
-                counter--;
-            }
-            @Override
-            public void onFinish() {
-                if (playerName != null) {
-                    ArrayList signList = new ArrayList();
-                    signList.add(0, "" + number);
-                    signList.add(1, "" + playerName);
-                    signList.add(2, "Clicked");
-                    signList.add(3, "");
-                    signList.add(4, scoreP1[0]);
-                    signList.add(5, playRun);
-                    player.setValue(signList);
-                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                    startActivity(intent);
-                }
-            }
-        }.start();
+        // CountDownTimer yourCountDownTimer = new CountDownTimer(10000,1000) {
+        //    @Override
+        //    public void onTick(long millisUntilFinished) {
+        //        textView.setText(String.valueOf(counter));
+        //        counter--;
+        //    }
+        //    @Override
+        //    public void onFinish() {
+        //        if (playerName != null) {
+        //            ArrayList signList = new ArrayList();
+        //            signList.add(0, "" + number);
+        //            signList.add(1, "" + playerName);
+        //            signList.add(2, "Clicked");
+        //            signList.add(3, "");
+        //            signList.add(4, scoreP1[0]);
+        //            signList.add(5, playRun);
+        //            player.setValue(signList);
+        //            Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+        //            startActivity(intent);
+        //        }
+        //    }
+        //}.start();
 
         if (playerName != null) {
 
@@ -163,7 +163,7 @@ public class MainActivity2 extends AppCompatActivity {
                     signList.add(4, scoreP1[0]);
                     signList.add(5, playRun);
                     player.setValue(signList);
-                    yourCountDownTimer.cancel();
+                    //yourCountDownTimer.cancel();
 
                     other.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -207,7 +207,7 @@ public class MainActivity2 extends AppCompatActivity {
                     signList.add(4, scoreP1[0]);
                     signList.add(5, playRun);
                     player.setValue(signList);
-                    yourCountDownTimer.cancel();
+                    //yourCountDownTimer.cancel();
 
                     other.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -252,7 +252,7 @@ public class MainActivity2 extends AppCompatActivity {
                     signList.add(4, scoreP1[0]);
                     signList.add(5, playRun);
                     player.setValue(signList);
-                    yourCountDownTimer.cancel();
+                    //yourCountDownTimer.cancel();
 
                     other.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -293,7 +293,7 @@ public class MainActivity2 extends AppCompatActivity {
                     prefs.edit().remove("playerNumber").commit();
                     prefs.edit().remove("otherNumber").commit();
                     prefs.edit().remove("number").commit();
-                    yourCountDownTimer.cancel();
+                    //yourCountDownTimer.cancel();
                     Intent intent = new Intent(MainActivity2.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
