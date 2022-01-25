@@ -164,9 +164,30 @@ public class MainActivity2 extends AppCompatActivity {
                     signList.add(5, playRun);
                     player.setValue(signList);
                     yourCountDownTimer.cancel();
-                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                    startActivity(intent);
 
+                    other.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // This method is called once with the initial value and again
+                            // whenever data at this location is updated.
+                            String statut = dataSnapshot.child("2").getValue(String.class);
+                            TextView chooseSign = findViewById(R.id.chooseSign);
+                            chooseSign.setText(statut);
+                            if (statut.equals("Clicked")) {
+                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            Log.w("APPX", "Failed to read value.", error.toException());
+                        }
+                    });
                 }
             });
 
@@ -182,8 +203,30 @@ public class MainActivity2 extends AppCompatActivity {
                     signList.add(5, playRun);
                     player.setValue(signList);
                     yourCountDownTimer.cancel();
-                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                    startActivity(intent);
+
+                    other.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // This method is called once with the initial value and again
+                            // whenever data at this location is updated.
+                            String statut = dataSnapshot.child("2").getValue(String.class);
+                            TextView chooseSign = findViewById(R.id.chooseSign);
+                            chooseSign.setText(statut);
+                            if (statut.equals("Clicked")) {
+                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            Log.w("APPX", "Failed to read value.", error.toException());
+                        }
+                    });
 
                 }
             });
@@ -200,8 +243,30 @@ public class MainActivity2 extends AppCompatActivity {
                     signList.add(5, playRun);
                     player.setValue(signList);
                     yourCountDownTimer.cancel();
-                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                    startActivity(intent);
+
+                    other.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // This method is called once with the initial value and again
+                            // whenever data at this location is updated.
+                            String statut = dataSnapshot.child("2").getValue(String.class);
+                            TextView chooseSign = findViewById(R.id.chooseSign);
+                            chooseSign.setText(statut);
+                            if (statut.equals("Clicked")) {
+                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            Log.w("APPX", "Failed to read value.", error.toException());
+                        }
+                    });
                 }
             });
 
