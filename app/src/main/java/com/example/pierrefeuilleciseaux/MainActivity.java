@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     ArrayList playerInfos = new ArrayList();
                     playerInfos.add(0, "1");
                     playerInfos.add(1, "" + name);
-                    playerInfos.add(2, 0);
+                    playerInfos.add(2, "Not Clicked");
                     playerInfos.add(3, "Sign");
                     playerInfos.add(4, 0);
                     playerInfos.add(5, 0);
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     ArrayList playerInfos = new ArrayList();
                     playerInfos.add(0, "2");
                     playerInfos.add(1, "" + name);
-                    playerInfos.add(2, 0);
+                    playerInfos.add(2, "Not Clicked");
                     playerInfos.add(3, "Sign");
                     playerInfos.add(4, 0);
                     playerInfos.add(5, 0);

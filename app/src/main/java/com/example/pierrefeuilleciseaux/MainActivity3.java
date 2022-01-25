@@ -172,7 +172,7 @@ public class MainActivity3 extends AppCompatActivity {
                             ArrayList signList = new ArrayList();
                             signList.add(0, "" + number);
                             signList.add(1, "" + name);
-                            signList.add(2, 0);
+                            signList.add(2, "Not Clicked");
                             signList.add(3, "" + sign);
                             signList.add(4, 0);
                             signList.add(5, 0);
@@ -200,7 +200,7 @@ public class MainActivity3 extends AppCompatActivity {
                             ArrayList signList = new ArrayList();
                             signList.add(0, "" + number);
                             signList.add(1, "" + name);
-                            signList.add(2, playRun);
+                            signList.add(2, "Not Clicked");
                             signList.add(3, "" + sign);
                             signList.add(4, scoreP1);
                             signList.add(5, playRun);
