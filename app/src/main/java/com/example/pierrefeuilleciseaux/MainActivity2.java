@@ -178,28 +178,22 @@ public class MainActivity2 extends AppCompatActivity {
                                     // This method is called once with the initial value and again
                                     // whenever data at this location is updated.
                                     String statutPlayer = dataSnapshot.child("2").getValue(String.class);
-                                    TextView chooseSign = findViewById(R.id.chooseSign);
                                     if (statutOther != null) {
                                         if (statutOther.equals("Clicked")) {
                                             if (statutPlayer.equals("Clicked")) {
-                                                //Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                                                //startActivity(intent);
-                                                //finish();
-                                                chooseSign.setText("Test1");
-                                            } else {
-                                                chooseSign.setText("Test2");
+                                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                                startActivity(intent);
+                                                finish();
                                             }
                                         } else {
-                                            //Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                                            //startActivity(intent);
-                                            //finish();
-                                            chooseSign.setText("Test3");
+                                            Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                            startActivity(intent);
+                                            finish();
                                         }
                                     } else {
-                                        //Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                                        //startActivity(intent);
-                                        //finish();
-                                        chooseSign.setText("Test4");
+                                        Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                 }
 
@@ -246,28 +240,26 @@ public class MainActivity2 extends AppCompatActivity {
                                     // This method is called once with the initial value and again
                                     // whenever data at this location is updated.
                                     String statutPlayer = dataSnapshot.child("2").getValue(String.class);
-                                    TextView chooseSign = findViewById(R.id.chooseSign);
                                     if (statutOther != null) {
                                         if (statutOther.equals("Clicked")) {
                                             if (statutPlayer.equals("Clicked")) {
-                                                //Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                                                //startActivity(intent);
-                                                //finish();
-                                                chooseSign.setText("Test1");
+                                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                                startActivity(intent);
+                                                finish();
                                             } else {
-                                                chooseSign.setText("Test2");
+                                                Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                                startActivity(intent);
+                                                finish();
                                             }
                                         } else {
-                                            //Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                                            //startActivity(intent);
-                                            //finish();
-                                            chooseSign.setText("Test3");
+                                            Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                            startActivity(intent);
+                                            finish();
                                         }
                                     } else {
-                                        //Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                                        //startActivity(intent);
-                                        //finish();
-                                        chooseSign.setText("Test4");
+                                        Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                 }
 
@@ -315,28 +307,26 @@ public class MainActivity2 extends AppCompatActivity {
                                     // This method is called once with the initial value and again
                                     // whenever data at this location is updated.
                                     String statutPlayer = dataSnapshot.child("2").getValue(String.class);
-                                    TextView chooseSign = findViewById(R.id.chooseSign);
                                     if (statutOther != null) {
                                         if (statutOther.equals("Clicked")) {
                                             if (statutPlayer.equals("Clicked")) {
-                                                //Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                                                //startActivity(intent);
-                                                //finish();
-                                                chooseSign.setText("Test1");
+                                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                                startActivity(intent);
+                                                finish();
                                             } else {
-                                                chooseSign.setText("Test2");
+                                                Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                                startActivity(intent);
+                                                finish();
                                             }
                                         } else {
-                                            //Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                                            //startActivity(intent);
-                                            //finish();
-                                            chooseSign.setText("Test3");
+                                            Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                            startActivity(intent);
+                                            finish();
                                         }
                                     } else {
-                                        //Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                                        //startActivity(intent);
-                                        //finish();
-                                        chooseSign.setText("Test4");
+                                        Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                 }
 
