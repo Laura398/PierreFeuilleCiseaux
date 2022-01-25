@@ -173,20 +173,20 @@ public class MainActivity2 extends AppCompatActivity {
                             Integer statut = dataSnapshot.child("2").getValue(Integer.class);
                             String sign = dataSnapshot.child("3").getValue(String.class);
                             if (statut != null) {
-                                if (sign.equals("")) {
-                                    Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    if (statut.equals(playRun)) {
-                                        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
+                                if (statut.equals(playRun)) {
+                                    if (sign.equals("Sign")) {
                                         Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                         startActivity(intent);
                                         finish();
+                                    } else {
+                                        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
+                                } else {
+                                    Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
                             } else {
                                 Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
@@ -225,20 +225,20 @@ public class MainActivity2 extends AppCompatActivity {
                             Integer statut = dataSnapshot.child("2").getValue(Integer.class);
                             String sign = dataSnapshot.child("3").getValue(String.class);
                             if (statut != null) {
-                                if (sign.equals("")) {
-                                    Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    if (statut.equals(playRun)) {
-                                        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
+                                if (statut.equals(playRun)) {
+                                    if (sign.equals("Sign")) {
                                         Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                         startActivity(intent);
                                         finish();
+                                    } else {
+                                        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
+                                } else {
+                                    Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
                             } else {
                                 Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
@@ -278,20 +278,20 @@ public class MainActivity2 extends AppCompatActivity {
                             Integer statut = dataSnapshot.child("2").getValue(Integer.class);
                             String sign = dataSnapshot.child("3").getValue(String.class);
                             if (statut != null) {
-                                if (sign.equals("")) {
-                                    Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    if (statut.equals(playRun)) {
-                                        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
+                                if (statut.equals(playRun)) {
+                                    if (sign.equals("Sign")) {
                                         Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                         startActivity(intent);
                                         finish();
+                                    } else {
+                                        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
+                                } else {
+                                    Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
                             } else {
                                 Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
