@@ -170,24 +170,43 @@ public class MainActivity2 extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
-                            String statut = dataSnapshot.child("2").getValue(String.class);
+                            String statutOther = dataSnapshot.child("2").getValue(String.class);
                             TextView chooseSign = findViewById(R.id.chooseSign);
                             chooseSign.setText(statut);
-                            if (statut != null) {
-                                if (statut.equals("Clicked")) {
-                                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                                    startActivity(intent);
-                                    finish();
+
+                            player.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    // This method is called once with the initial value and again
+                                    // whenever data at this location is updated.
+                                    String statutPlayer = dataSnapshot.child("2").getValue(String.class);
+                                    TextView chooseSign = findViewById(R.id.chooseSign);
+                                    chooseSign.setText(statutOther);
+                                    if (statutOther != null) {
+                                        if (statutOther.equals("Clicked")) {
+                                            if (statutPlayer.equals("Clicked")) {
+                                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                        } else {
+                                            Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    } else {
+                                        Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
                                 }
-                            } else {
-                                Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                                startActivity(intent);
-                                finish();
-                            }
+
+                                @Override
+                                public void onCancelled(DatabaseError error) {
+                                    // Failed to read value
+                                    Log.w("APPX", "Failed to read value.", error.toException());
+                                }
+                            });
                         }
 
                         @Override
