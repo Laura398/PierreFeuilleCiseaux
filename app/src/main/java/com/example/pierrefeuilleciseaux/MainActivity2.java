@@ -171,8 +171,6 @@ public class MainActivity2 extends AppCompatActivity {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
                             Integer statut = dataSnapshot.child("2").getValue(Integer.class);
-                            TextView chooseSign = findViewById(R.id.chooseSign);
-                            chooseSign.setText(statut.toString());
                             if (statut != null) {
                                 if (statut.equals(playRun)) {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
@@ -218,8 +216,6 @@ public class MainActivity2 extends AppCompatActivity {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
                             Integer statut = dataSnapshot.child("2").getValue(Integer.class);
-                            TextView chooseSign = findViewById(R.id.chooseSign);
-                            chooseSign.setText(statut.toString());
                             if (statut != null) {
                                 if (statut.equals(playRun)) {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
@@ -266,8 +262,6 @@ public class MainActivity2 extends AppCompatActivity {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
                             Integer statut = dataSnapshot.child("2").getValue(Integer.class);
-                            TextView chooseSign = findViewById(R.id.chooseSign);
-                            chooseSign.setText(statut.toString());
                             if (statut != null) {
                                 if (statut.equals(playRun)) {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
