@@ -184,6 +184,10 @@ public class MainActivity2 extends AppCompatActivity {
                                                 Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
                                                 startActivity(intent);
                                                 finish();
+                                            } else {
+                                                Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                                startActivity(intent);
+                                                finish();
                                             }
                                         } else {
                                             Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
@@ -244,6 +248,10 @@ public class MainActivity2 extends AppCompatActivity {
                                         if (statutOther.equals("Clicked")) {
                                             if (statutPlayer.equals("Clicked")) {
                                                 Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                                 startActivity(intent);
                                                 finish();
                                             }
@@ -307,6 +315,10 @@ public class MainActivity2 extends AppCompatActivity {
                                         if (statutOther.equals("Clicked")) {
                                             if (statutPlayer.equals("Clicked")) {
                                                 Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                                 startActivity(intent);
                                                 finish();
                                             }
