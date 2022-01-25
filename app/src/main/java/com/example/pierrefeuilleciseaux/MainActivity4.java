@@ -51,12 +51,7 @@ public class MainActivity4 extends AppCompatActivity {
         player.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String numberP1 = dataSnapshot.child("0").getValue(String.class);
-                String nameP1 = dataSnapshot.child("1").getValue(String.class);
-                String statutP1 = dataSnapshot.child("2").getValue(String.class);
-                String signP1inDB = dataSnapshot.child("3").getValue(String.class);
                 scoreP1 = dataSnapshot.child("4").getValue(Integer.class);
-                Integer playRun = dataSnapshot.child("5").getValue(Integer.class);
 
                 TextView textNameP1 = findViewById(R.id.nameP1);
                 TextView textScoreP1 = findViewById(R.id.scoreP1);

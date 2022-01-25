@@ -38,10 +38,8 @@ public class MainActivity3 extends AppCompatActivity {
         View view = findViewById(R.id.view);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String playerName = prefs.getString("playerName", null);
         String playerNumber = prefs.getString("playerNumber", null);
         String otherNumber = prefs.getString("otherNumber", null);
-        String number = prefs.getString("number", null);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pierre-feuille-ciseaux-a00d3-default-rtdb.europe-west1.firebasedatabase.app/");
         DatabaseReference player = database.getReference("" + playerNumber);
@@ -57,11 +55,7 @@ public class MainActivity3 extends AppCompatActivity {
                 int imgScissors = getResources().getIdentifier("" + R.drawable.ciseaux100, null, null);
                 int imgSkip = getResources().getIdentifier("" + R.drawable.skip, null, null);
 
-                String numberP1 = dataSnapshot.child("0").getValue(String.class);
-                String nameP1 = dataSnapshot.child("1").getValue(String.class);
-                String statutP1 = dataSnapshot.child("2").getValue(String.class);
                 String signP1inDB = dataSnapshot.child("3").getValue(String.class);
-                Integer score1 = dataSnapshot.child("4").getValue(Integer.class);
                 scoreP1 = dataSnapshot.child("4").getValue(Integer.class);
                 playRun = dataSnapshot.child("5").getValue(Integer.class);
                 ImageView signP1 = findViewById(R.id.sign1);
@@ -178,7 +172,7 @@ public class MainActivity3 extends AppCompatActivity {
                             ArrayList signList = new ArrayList();
                             signList.add(0, "" + number);
                             signList.add(1, "" + name);
-                            signList.add(2, "Not Clicked");
+                            signList.add(2, 0);
                             signList.add(3, "" + sign);
                             signList.add(4, 0);
                             signList.add(5, 0);
@@ -206,7 +200,7 @@ public class MainActivity3 extends AppCompatActivity {
                             ArrayList signList = new ArrayList();
                             signList.add(0, "" + number);
                             signList.add(1, "" + name);
-                            signList.add(2, "Not Clicked");
+                            signList.add(2, playRun);
                             signList.add(3, "" + sign);
                             signList.add(4, scoreP1);
                             signList.add(5, playRun);

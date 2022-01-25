@@ -73,8 +73,8 @@ public class MainActivity2 extends AppCompatActivity {
         final Integer[] scoreP1 = new Integer[1];
         final Integer[] scoreP2 = new Integer[1];
 
-        final String[] statutP1 = new String[1];
-        final String[] statutP2 = new String[1];
+        final Integer[] statutP1 = new Integer[1];
+        final Integer[] statutP2 = new Integer[1];
 
         // CountDownTimer yourCountDownTimer = new CountDownTimer(10000,1000) {
         //    @Override
@@ -88,7 +88,7 @@ public class MainActivity2 extends AppCompatActivity {
         //            ArrayList signList = new ArrayList();
         //            signList.add(0, "" + number);
         //            signList.add(1, "" + playerName);
-        //            signList.add(2, "Clicked");
+        //            signList.add(2, playRun);
         //            signList.add(3, "");
         //            signList.add(4, scoreP1[0]);
         //            signList.add(5, playRun);
@@ -108,7 +108,7 @@ public class MainActivity2 extends AppCompatActivity {
                     // whenever data at this location is updated.
                     String number = dataSnapshot.child("0").getValue(String.class);
                     String name = dataSnapshot.child("1").getValue(String.class);
-                    statutP1[0] = dataSnapshot.child("2").getValue(String.class);
+                    statutP1[0] = dataSnapshot.child("2").getValue(Integer.class);
                     String sign = dataSnapshot.child("3").getValue(String.class);
                     scoreP1[0] = dataSnapshot.child("4").getValue(Integer.class);
                     playRun = dataSnapshot.child("5").getValue(Integer.class);
@@ -134,7 +134,7 @@ public class MainActivity2 extends AppCompatActivity {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
                     String name = dataSnapshot.child("1").getValue(String.class);
-                    statutP2[0] = dataSnapshot.child("2").getValue(String.class);
+                    statutP2[0] = dataSnapshot.child("2").getValue(Integer.class);
                     String sign = dataSnapshot.child("3").getValue(String.class);
                     scoreP2[0] = dataSnapshot.child("4").getValue(Integer.class);
                     if (name != null) {
@@ -158,7 +158,7 @@ public class MainActivity2 extends AppCompatActivity {
                     ArrayList signList = new ArrayList();
                     signList.add(0, "" + number);
                     signList.add(1, "" + playerName);
-                    signList.add(2, "Clicked");
+                    signList.add(2, playRun);
                     signList.add(3, "Pierre");
                     signList.add(4, scoreP1[0]);
                     signList.add(5, playRun);
@@ -170,11 +170,11 @@ public class MainActivity2 extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
-                            String statut = dataSnapshot.child("2").getValue(String.class);
+                            Integer statut = dataSnapshot.child("2").getValue(Integer.class);
                             TextView chooseSign = findViewById(R.id.chooseSign);
                             chooseSign.setText(statut);
                             if (statut != null) {
-                                if (statut.equals("Clicked")) {
+                                if (statut.equals(playRun)) {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
                                     startActivity(intent);
                                     finish();
@@ -205,7 +205,7 @@ public class MainActivity2 extends AppCompatActivity {
                     ArrayList signList = new ArrayList();
                     signList.add(0, "" + number);
                     signList.add(1, "" + playerName);
-                    signList.add(2, "Clicked");
+                    signList.add(2, playRun);
                     signList.add(3, "Feuille");
                     signList.add(4, scoreP1[0]);
                     signList.add(5, playRun);
@@ -217,11 +217,11 @@ public class MainActivity2 extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
-                            String statut = dataSnapshot.child("2").getValue(String.class);
+                            Integer statut = dataSnapshot.child("2").getValue(Integer.class);
                             TextView chooseSign = findViewById(R.id.chooseSign);
                             chooseSign.setText(statut);
                             if (statut != null) {
-                                if (statut.equals("Clicked")) {
+                                if (statut.equals(playRun)) {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
                                     startActivity(intent);
                                     finish();
@@ -253,7 +253,7 @@ public class MainActivity2 extends AppCompatActivity {
                     ArrayList signList = new ArrayList();
                     signList.add(0, "" + number);
                     signList.add(1, "" + playerName);
-                    signList.add(2, "Clicked");
+                    signList.add(2, playRun);
                     signList.add(3, "Ciseaux");
                     signList.add(4, scoreP1[0]);
                     signList.add(5, playRun);
@@ -265,11 +265,11 @@ public class MainActivity2 extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
-                            String statut = dataSnapshot.child("2").getValue(String.class);
+                            Integer statut = dataSnapshot.child("2").getValue(Integer.class);
                             TextView chooseSign = findViewById(R.id.chooseSign);
                             chooseSign.setText(statut);
                             if (statut != null) {
-                                if (statut.equals("Clicked")) {
+                                if (statut.equals(playRun)) {
                                     Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
                                     startActivity(intent);
                                     finish();
