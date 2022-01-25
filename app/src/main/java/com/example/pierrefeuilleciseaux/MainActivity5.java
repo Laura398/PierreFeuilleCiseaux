@@ -34,9 +34,11 @@ public class MainActivity5 extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String statut = dataSnapshot.child("2").getValue(String.class);
-                if (statut.equals("Clicked")) {
-                    Intent intent = new Intent(MainActivity5.this, MainActivity3.class);
-                    startActivity(intent);
+                if (statut != null) {
+                    if (statut.equals("Clicked")) {
+                        Intent intent = new Intent(MainActivity5.this, MainActivity3.class);
+                        startActivity(intent);
+                    }
                 }
             }
 

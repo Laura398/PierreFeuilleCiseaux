@@ -173,9 +173,14 @@ public class MainActivity2 extends AppCompatActivity {
                             String statut = dataSnapshot.child("2").getValue(String.class);
                             TextView chooseSign = findViewById(R.id.chooseSign);
                             chooseSign.setText(statut);
-                            if (statut.equals("Clicked")) {
-                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                                startActivity(intent);
+                            if (statut != null) {
+                                if (statut.equals("Clicked")) {
+                                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                    startActivity(intent);
+                                } else {
+                                    Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                    startActivity(intent);
+                                }
                             } else {
                                 Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                 startActivity(intent);
@@ -212,9 +217,14 @@ public class MainActivity2 extends AppCompatActivity {
                             String statut = dataSnapshot.child("2").getValue(String.class);
                             TextView chooseSign = findViewById(R.id.chooseSign);
                             chooseSign.setText(statut);
-                            if (statut.equals("Clicked")) {
-                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                                startActivity(intent);
+                            if (statut != null) {
+                                if (statut.equals("Clicked")) {
+                                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                    startActivity(intent);
+                                } else {
+                                    Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                    startActivity(intent);
+                                }
                             } else {
                                 Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                 startActivity(intent);
@@ -252,9 +262,14 @@ public class MainActivity2 extends AppCompatActivity {
                             String statut = dataSnapshot.child("2").getValue(String.class);
                             TextView chooseSign = findViewById(R.id.chooseSign);
                             chooseSign.setText(statut);
-                            if (statut.equals("Clicked")) {
-                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                                startActivity(intent);
+                            if (statut != null) {
+                                if (statut.equals("Clicked")) {
+                                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                    startActivity(intent);
+                                } else {
+                                    Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                    startActivity(intent);
+                                }
                             } else {
                                 Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
                                 startActivity(intent);
