@@ -15,12 +15,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity5 extends AppCompatActivity {
+public class MainActivity6 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main5);
+        setContentView(R.layout.activity_main6);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String otherNumber = prefs.getString("otherNumber", null);
@@ -34,18 +34,12 @@ public class MainActivity5 extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String statut = dataSnapshot.child("2").getValue(String.class);
-                String sign = dataSnapshot.child("3").getValue(String.class);
                 if (statut != null) {
-                    if (statut.equals("Clicked")) {
-                        if (sign.equals("Sign")) {
-
-                        } else {
-                            Intent intent = new Intent(MainActivity5.this, MainActivity3.class);
+                    if (statut.equals("Not Clicked")) {
+                            Intent intent = new Intent(MainActivity6.this, MainActivity2.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             finish();
-                        }
-
                     }
                 }
             }

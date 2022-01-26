@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     player2.setValue(playerInfos);
                 }
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

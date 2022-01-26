@@ -161,7 +161,7 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (playRun.equals(3)) {
-                    player.addValueEventListener(new ValueEventListener() {
+                    player.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // This method is called once with the initial value and again
@@ -173,7 +173,7 @@ public class MainActivity3 extends AppCompatActivity {
                             signList.add(0, "" + number);
                             signList.add(1, "" + name);
                             signList.add(2, "Not Clicked");
-                            signList.add(3, "" + sign);
+                            signList.add(3, "Sign");
                             signList.add(4, 0);
                             signList.add(5, 0);
                             player.setValue(signList);
@@ -186,25 +186,49 @@ public class MainActivity3 extends AppCompatActivity {
                         }
                     });
                     Intent intent = new Intent(MainActivity3.this, MainActivity4.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
                 } else {
-                    player.addValueEventListener(new ValueEventListener() {
+                    player.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
-                            String number = dataSnapshot.child("0").getValue(String.class);
-                            String name = dataSnapshot.child("1").getValue(String.class);
-                            String sign = dataSnapshot.child("3").getValue(String.class);
-                            ArrayList signList = new ArrayList();
-                            signList.add(0, "" + number);
-                            signList.add(1, "" + name);
-                            signList.add(2, "Not Clicked");
-                            signList.add(3, "" + sign);
-                            signList.add(4, scoreP1);
-                            signList.add(5, playRun);
-                            player.setValue(signList);
+
+                            other.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    String statut = dataSnapshot.child("2").getValue(String.class);
+                                    String number = dataSnapshot.child("0").getValue(String.class);
+                                    String name = dataSnapshot.child("1").getValue(String.class);
+                                    ArrayList signList = new ArrayList();
+                                    signList.add(0, "" + number);
+                                    signList.add(1, "" + name);
+                                    signList.add(2, "Not Clicked");
+                                    signList.add(3, "Sign");
+                                    signList.add(4, scoreP1);
+                                    signList.add(5, playRun);
+                                    player.setValue(signList);
+                                    if (statut.equals("Not Clicked")) {
+                                        Intent intent = new Intent(MainActivity3.this, MainActivity2.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        Intent intent = new Intent(MainActivity3.this, MainActivity6.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError error) {
+                                    // Failed to read value
+                                    Log.w("APPX", "Failed to read value.", error.toException());
+                                }
+                            });
                         }
 
                         @Override
@@ -213,9 +237,7 @@ public class MainActivity3 extends AppCompatActivity {
                             Log.w("APPX", "Failed to read value.", error.toException());
                         }
                     });
-                    Intent intent = new Intent(MainActivity3.this, MainActivity2.class);
-                    startActivity(intent);
-                    finish();
+
                 }
 
             }
