@@ -10,8 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PierreFeuilleCiseaux">
         <activity
+            android:name=".MainActivity7"
+            android:exported="false"
+            android:noHistory="true"/>
+        <activity
             android:name=".MainActivity6"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".MainActivity5"
             android:exported="false"

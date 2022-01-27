@@ -138,16 +138,87 @@ public class MainActivity4 extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
+                System.exit(0);
             }
         });
 
         again.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+                        String number = dataSnapshot.child("0").getValue(String.class);
+                        String name = dataSnapshot.child("1").getValue(String.class);
+                        ArrayList signList = new ArrayList();
+                        signList.add(0, "" + number);
+                        signList.add(1, "" + name);
+                        signList.add(2, "Not Clicked");
+                        signList.add(3, "Sign");
+                        signList.add(4, 0);
+                        signList.add(5, 0);
+                        player.setValue(signList);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        Log.w("APPX", "Failed to read value.", error.toException());
+                    }
+                });
+                other.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+                        String statut = dataSnapshot.child("2").getValue(String.class);
+
+                        if (statut.equals("Not Clicked")) {
+                            Intent intent = new Intent(MainActivity4.this, MainActivity2.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(MainActivity4.this, MainActivity6.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        Log.w("APPX", "Failed to read value.", error.toException());
+                    }
+                });
                 Intent intent = new Intent(MainActivity4.this, MainActivity2.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        other.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange (DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String sign = dataSnapshot.child("0").getValue(String.class);
+
+                if (sign == null) {
+                    other.removeEventListener(this);
+                    Intent intent = new Intent(MainActivity4.this, MainActivity7.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("APPX", "Failed to read value.", error.toException());
             }
         });
 
@@ -176,6 +247,7 @@ public class MainActivity4 extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                         dialog.dismiss();
+                        System.exit(0);
                     }
                 }).setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -183,4 +255,5 @@ public class MainActivity4 extends AppCompatActivity {
             }
         }).show();
     }
+
 }

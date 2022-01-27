@@ -139,6 +139,31 @@ public class MainActivity3 extends AppCompatActivity {
                             textView.setText("Loose");
                         }
 
+                        player.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                // This method is called once with the initial value and again
+                                // whenever data at this location is updated.
+                                String number = dataSnapshot.child("0").getValue(String.class);
+                                String name = dataSnapshot.child("1").getValue(String.class);
+                                String sign = dataSnapshot.child("3").getValue(String.class);
+                                ArrayList signList = new ArrayList();
+                                signList.add(0, "" + number);
+                                signList.add(1, "" + name);
+                                signList.add(2, "Clicked");
+                                signList.add(3, "" + sign);
+                                signList.add(4, scoreP1);
+                                signList.add(5, 0);
+                                player.setValue(signList);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError error) {
+                                // Failed to read value
+                                Log.w("APPX", "Failed to read value.", error.toException());
+                            }
+                        });
+
                     }
 
                     @Override
@@ -172,9 +197,9 @@ public class MainActivity3 extends AppCompatActivity {
                             ArrayList signList = new ArrayList();
                             signList.add(0, "" + number);
                             signList.add(1, "" + name);
-                            signList.add(2, "Not Clicked");
-                            signList.add(3, "Sign");
-                            signList.add(4, 0);
+                            signList.add(2, "Clicked");
+                            signList.add(3, "" + sign);
+                            signList.add(4, scoreP1);
                             signList.add(5, 0);
                             player.setValue(signList);
                         }
@@ -195,22 +220,21 @@ public class MainActivity3 extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
-
+                            String number1 = dataSnapshot.child("0").getValue(String.class);
+                            String name1 = dataSnapshot.child("1").getValue(String.class);
+                            ArrayList signList = new ArrayList();
+                            signList.add(0, "" + number1);
+                            signList.add(1, "" + name1);
+                            signList.add(2, "Not Clicked");
+                            signList.add(3, "Sign");
+                            signList.add(4, scoreP1);
+                            signList.add(5, playRun);
+                            player.setValue(signList);
                             other.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    String statut = dataSnapshot.child("2").getValue(String.class);
-                                    String number = dataSnapshot.child("0").getValue(String.class);
-                                    String name = dataSnapshot.child("1").getValue(String.class);
-                                    ArrayList signList = new ArrayList();
-                                    signList.add(0, "" + number);
-                                    signList.add(1, "" + name);
-                                    signList.add(2, "Not Clicked");
-                                    signList.add(3, "Sign");
-                                    signList.add(4, scoreP1);
-                                    signList.add(5, playRun);
-                                    player.setValue(signList);
-                                    if (statut.equals("Not Clicked")) {
+                                    String statut2 = dataSnapshot.child("2").getValue(String.class);
+                                    if (statut2.equals("Not Clicked")) {
                                         Intent intent = new Intent(MainActivity3.this, MainActivity2.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(intent);
@@ -242,6 +266,29 @@ public class MainActivity3 extends AppCompatActivity {
 
             }
         });
+
+        other.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange (DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String sign = dataSnapshot.child("0").getValue(String.class);
+
+                if (sign == null) {
+                    other.removeEventListener(this);
+                    Intent intent = new Intent(MainActivity3.this, MainActivity7.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("APPX", "Failed to read value.", error.toException());
+            }
+        });
     }
 
     @Override
@@ -267,6 +314,7 @@ public class MainActivity3 extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                         dialog.dismiss();
+                        System.exit(0);
                     }
                 }).setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {

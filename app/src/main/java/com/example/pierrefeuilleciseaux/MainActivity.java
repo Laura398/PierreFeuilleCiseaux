@@ -78,6 +78,27 @@ public class MainActivity extends AppCompatActivity {
                     playerInfos.add(4, 0);
                     playerInfos.add(5, 0);
                     player1.setValue(playerInfos);
+                    player2.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String statut = dataSnapshot.child("2").getValue(String.class);
+
+                            if (statut == null) {
+                                Intent intent = new Intent(MainActivity.this, MainActivity6.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            Log.w("APPX", "Failed to read value.", error.toException());
+                        }
+                    });
                 } else {
                     String playerNumber = "Player2";
                     String otherNumber = "Player1";
@@ -98,10 +119,28 @@ public class MainActivity extends AppCompatActivity {
                     playerInfos.add(4, 0);
                     playerInfos.add(5, 0);
                     player2.setValue(playerInfos);
+                    player1.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String statut = dataSnapshot.child("2").getValue(String.class);
+
+                            if (statut == null) {
+                                Intent intent = new Intent(MainActivity.this, MainActivity6.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            Log.w("APPX", "Failed to read value.", error.toException());
+                        }
+                    });
                 }
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
             }
         });
 

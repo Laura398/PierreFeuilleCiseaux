@@ -44,6 +44,9 @@ public class MainActivity2 extends AppCompatActivity {
     public int counter = 10;
     @TargetApi(Build.VERSION_CODES.O)
 
+    CountDownTimer yourCountDownTimer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,7 @@ public class MainActivity2 extends AppCompatActivity {
         String playerNumber = prefs.getString("playerNumber", null);
         String otherNumber = prefs.getString("otherNumber", null);
         String number = prefs.getString("number", null);
+
         if (playerName != null) {
             TextView getNameP1 = findViewById(R.id.nameP1);
             getNameP1.setText(playerName);
@@ -76,7 +80,7 @@ public class MainActivity2 extends AppCompatActivity {
         final String[] statutP1 = new String[1];
         final String[] statutP2 = new String[1];
 
-         CountDownTimer yourCountDownTimer = new CountDownTimer(10000,1000) {
+         yourCountDownTimer = new CountDownTimer(10000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 textView.setText(String.valueOf(counter));
@@ -93,9 +97,30 @@ public class MainActivity2 extends AppCompatActivity {
                     signList.add(4, scoreP1[0]);
                     signList.add(5, playRun);
                     player.setValue(signList);
-                    Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    other.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // This method is called once with the initial value and again
+                            // whenever data at this location is updated.
+                            String statut = dataSnapshot.child("2").getValue(String.class);
+
+                            if (statut.equals("Clicked")) {
+                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            Log.w("APPX", "Failed to read value.", error.toException());
+                        }
+                    });
                 }
             }
         }.start();
@@ -372,10 +397,33 @@ public class MainActivity2 extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
+                    System.exit(0);
                 }
             });
 
+            other.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange (DataSnapshot dataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    String sign = dataSnapshot.child("0").getValue(String.class);
 
+                    if (sign == null) {
+                        yourCountDownTimer.cancel();
+                        other.removeEventListener(this);
+                        Intent intent = new Intent(MainActivity2.this, MainActivity7.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.w("APPX", "Failed to read value.", error.toException());
+                }
+            });
 
         }
     }
@@ -398,12 +446,13 @@ public class MainActivity2 extends AppCompatActivity {
                         prefs.edit().remove("playerNumber").commit();
                         prefs.edit().remove("otherNumber").commit();
                         prefs.edit().remove("number").commit();
-                        // yourCountDownTimer.cancel();
+                        yourCountDownTimer.cancel();
                         Intent intent = new Intent(MainActivity2.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
                         dialog.dismiss();
+                        System.exit(0);
                     }
                 }).setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
