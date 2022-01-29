@@ -10,13 +10,15 @@
         android:id="@+id/view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="@drawable/fond"
         />
 
     <ImageView
         android:id="@+id/sign2"
         android:layout_width="105dp"
         android:layout_height="96dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/button_bg_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -26,16 +28,20 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="Result"
+        android:textColor="#83D3B0"
+        android:textSize="80px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="151dp" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <ImageView
         android:id="@+id/sign1"
         android:layout_width="105dp"
         android:layout_height="96dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/button_bg_round"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"

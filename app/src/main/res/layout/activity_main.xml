@@ -7,6 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/fond" />
 
     <TextView
         android:id="@+id/chooseName"
@@ -15,16 +20,23 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Please enter your name :"
+        android:textColor="#37B67F"
+        android:textSize="60px"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="217dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/teal_700"
+        android:drawableTint="#FFFFFF"
         android:ems="10"
+        android:foregroundTint="#FFFFFF"
         android:inputType="textPersonName"
+        android:shadowColor="#FFFFFF"
         android:text=""
         app:layout_constraintEnd_toEndOf="@+id/chooseName"
         app:layout_constraintHorizontal_bias="0.554"
@@ -33,12 +45,18 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:ems="10"
+        android:textSize="60px"
+        android:textColor="#37B67F"
         android:inputType="textPersonName"
-        android:text="Confirmer"
+        android:text="Play"
+        android:color="#30805A"
+        android:background="@drawable/button_bg_round"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/name"
+        android:padding="15dp"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />

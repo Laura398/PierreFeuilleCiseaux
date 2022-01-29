@@ -37,6 +37,7 @@ public class MainActivity4 extends AppCompatActivity {
 
         Button back = findViewById(R.id.back);
         Button again = findViewById(R.id.again);
+        Button history = findViewById(R.id.history);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String playerName = prefs.getString("playerName", null);
@@ -91,29 +92,29 @@ public class MainActivity4 extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Integer myScore = dataSnapshot.child("" + playerName).child("" + nameP2).child("" + playerName).getValue(Integer.class);
+                Integer myScore = dataSnapshot.child("" + playerName).child("" + nameP2).getValue(Integer.class);
 
                 if (scoreP1 > scoreP2) {
                     if (myScore != null) {
                         myScore += 1;
                         Map<String, Object> hashMap = new HashMap<>();
                         hashMap.put("" + playerName, myScore);
-                        score.child("" + playerName).child("" + nameP2).updateChildren(hashMap);
+                        score.child("" + playerName).updateChildren(hashMap);
                     } else {
-                        score.child("" + playerName).child("" + nameP2).child("" + playerName).setValue(scoreP1);
+                        score.child("" + playerName).child("" + nameP2).setValue(scoreP1);
                     }
                 } else if (scoreP2 > scoreP1) {
                     if (myScore == null) {
-                        score.child("" + playerName).child("" + nameP2).child("" + playerName).setValue(0);
+                        score.child("" + playerName).child("" + nameP2).setValue(0);
                     }
                 } else {
                     if (myScore != null) {
                         myScore += 1;
                         Map<String, Object> hashMap = new HashMap<>();
                         hashMap.put("" + playerName, myScore);
-                        score.child("" + playerName).child("" + nameP2).updateChildren(hashMap);
+                        score.child("" + playerName).updateChildren(hashMap);
                     } else {
-                        score.child("" + playerName).child("" + nameP2).child("" + playerName).setValue(scoreP1);
+                        score.child("" + playerName).child("" + nameP2).setValue(scoreP1);
                     }
                 }
 
@@ -139,6 +140,16 @@ public class MainActivity4 extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 System.exit(0);
+            }
+        });
+
+        history.setOnClickListener(new View.OnClickListener() {
+             @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity4.this, MainActivity8.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -198,6 +209,8 @@ public class MainActivity4 extends AppCompatActivity {
                 finish();
             }
         });
+
+
 
         other.addValueEventListener(new ValueEventListener() {
             @Override

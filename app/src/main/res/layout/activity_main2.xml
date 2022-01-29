@@ -6,10 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
+    <View
+        android:id="@+id/view"
+
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/fond" />
+
     <TextView
         android:id="@+id/nameP1"
-        android:layout_width="41dp"
-        android:layout_height="19dp"
+        android:textColor="#83D3B0"
+        android:textSize="80px"
+        android:layout_width="400px"
+        android:layout_height="100px"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -21,8 +30,10 @@
 
     <TextView
         android:id="@+id/nameP2"
-        android:layout_width="75dp"
-        android:layout_height="26dp"
+        android:textColor="#83D3B0"
+        android:textSize="80px"
+        android:layout_width="400px"
+        android:layout_height="100px"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -37,7 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textSize="20dp"
+        android:textColor="#83D3B0"
+        android:textSize="80px"
         app:layout_constraintEnd_toEndOf="@+id/nameP1"
         app:layout_constraintStart_toStartOf="@+id/nameP1"
         app:layout_constraintTop_toBottomOf="@+id/nameP1" />
@@ -48,21 +60,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textSize="20dp"
+        android:textColor="#83D3B0"
+        android:textSize="80px"
         app:layout_constraintEnd_toEndOf="@+id/nameP2"
         app:layout_constraintStart_toStartOf="@+id/nameP2"
         app:layout_constraintTop_toBottomOf="@+id/nameP2" />
 
     <TextView
         android:id="@+id/chooseSign"
-        android:layout_width="58dp"
-        android:layout_height="19dp"
-        android:ems="10"
+        android:layout_width="400px"
+        android:layout_height="100px"
+        android:layout_marginTop="100dp"
         android:inputType="textPersonName"
         android:text="Choose :"
+        android:textColor="#83D3B0"
+        android:textSize="80px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="217dp" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <Button
         android:id="@+id/back"
@@ -70,25 +85,29 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Back"
+        android:text="← Back"
+        android:textColor="#83D3B0"
+        android:textSize="80px"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageButton
         android:id="@+id/ciseaux"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ciseaux100"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="111dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_bg_round"
         app:layout_constraintEnd_toEndOf="@+id/feuille"
         app:layout_constraintStart_toStartOf="@+id/feuille"
-        app:layout_constraintTop_toBottomOf="@+id/feuille"/>
+        app:layout_constraintTop_toBottomOf="@+id/feuille"
+        app:srcCompat="@drawable/ciseaux100" />
 
     <ImageButton
         android:id="@+id/feuille"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_bg_round"
         app:layout_constraintEnd_toEndOf="@+id/pierre"
         app:layout_constraintStart_toStartOf="@+id/pierre"
         app:layout_constraintTop_toBottomOf="@+id/pierre"
@@ -98,20 +117,23 @@
         android:id="@+id/pierre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/pierre100"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="134dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_bg_round"
         app:layout_constraintEnd_toEndOf="@+id/chooseSign"
         app:layout_constraintStart_toStartOf="@+id/chooseSign"
-        app:layout_constraintTop_toBottomOf="@+id/chooseSign"/>
+        app:layout_constraintTop_toBottomOf="@+id/chooseSign"
+        app:srcCompat="@drawable/pierre100" />
 
     <TextView
         android:id="@+id/timer"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:text="Timer"
+        android:textColor="#83D3B0"
+        android:textSize="80px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
