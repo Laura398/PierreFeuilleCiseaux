@@ -101,42 +101,42 @@ public class MainActivity3 extends AppCompatActivity {
                         TextView textView = findViewById(R.id.textView);
                         if (signP1inDB.equals("Pierre")) {
                             if (signP2inDB.equals("Pierre")) {
-                                textView.setText("Draw");
+                                textView.setText("Egalité");
                             } else if (signP2inDB.equals("Feuille")) {
-                                textView.setText("Loose");
+                                textView.setText("Perdu");
                             } else if (signP2inDB.equals("Ciseaux")) {
-                                textView.setText("Win");
+                                textView.setText("Gagné");
                                 scoreP1 +=1;
                             } else {
-                                textView.setText("Win");
+                                textView.setText("Gagné");
                                 scoreP1 +=1;
                             }
                         } else if (signP1inDB.equals("Feuille")) {
                             if (signP2inDB.equals("Pierre")) {
-                                textView.setText("Win");
+                                textView.setText("Gagné");
                                 scoreP1 +=1;
                             } else if (signP2inDB.equals("Feuille")) {
-                                textView.setText("Draw");
+                                textView.setText("Egalité");
                             } else if (signP2inDB.equals("Ciseaux")) {
-                                textView.setText("Loose");
+                                textView.setText("Perdu");
                             } else {
-                                textView.setText("Win");
+                                textView.setText("Gagné");
                                 scoreP1 +=1;
                             }
                         } else if (signP1inDB.equals("Ciseaux")) {
                             if (signP2inDB.equals("Pierre")) {
-                                textView.setText("Loose");
+                                textView.setText("Perdu");
                             } else if (signP2inDB.equals("Feuille")) {
-                                textView.setText("Win");
+                                textView.setText("Gagné");
                                 scoreP1 +=1;
                             } else if (signP2inDB.equals("Ciseaux")) {
-                                textView.setText("Draw");
+                                textView.setText("Egalité");
                             } else {
-                                textView.setText("Win");
+                                textView.setText("Gagné");
                                 scoreP1 +=1;
                             }
                         } else {
-                            textView.setText("Loose");
+                            textView.setText("Perdu");
                         }
 
                         player.addListenerForSingleValueEvent(new ValueEventListener() {

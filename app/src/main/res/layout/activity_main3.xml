@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="Result"
+        android:text="Resultat"
         android:textColor="#83D3B0"
         android:textSize="80px"
         app:layout_constraintEnd_toEndOf="parent"

@@ -68,11 +68,11 @@
 
     <TextView
         android:id="@+id/chooseSign"
-        android:layout_width="400px"
+        android:layout_width="450px"
         android:layout_height="100px"
         android:layout_marginTop="100dp"
         android:inputType="textPersonName"
-        android:text="Choose :"
+        android:text="Choisissez :"
         android:textColor="#83D3B0"
         android:textSize="80px"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,9 +85,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
-        android:text="← Back"
+        android:text="← Retour"
         android:textColor="#83D3B0"
-        android:textSize="80px"
+        android:textSize="60px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
