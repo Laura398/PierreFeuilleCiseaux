@@ -92,29 +92,28 @@ public class MainActivity4 extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Integer myScore = dataSnapshot.child("" + playerName).child("" + nameP2).getValue(Integer.class);
-
+                Integer myScore = dataSnapshot.child("" + playerName).child("" + nameP2).child("" + playerName).getValue(Integer.class);
                 if (scoreP1 > scoreP2) {
                     if (myScore != null) {
                         myScore += 1;
                         Map<String, Object> hashMap = new HashMap<>();
                         hashMap.put("" + playerName, myScore);
-                        score.child("" + playerName).updateChildren(hashMap);
+                        score.child("" + playerName).child("" + nameP2).updateChildren(hashMap);
                     } else {
-                        score.child("" + playerName).child("" + nameP2).setValue(scoreP1);
+                        score.child("" + playerName).child("" + nameP2).child("" + playerName).setValue(scoreP1);
                     }
                 } else if (scoreP2 > scoreP1) {
                     if (myScore == null) {
-                        score.child("" + playerName).child("" + nameP2).setValue(0);
+                        score.child("" + playerName).child("" + nameP2).child("" + playerName).setValue(0);
                     }
                 } else {
                     if (myScore != null) {
                         myScore += 1;
                         Map<String, Object> hashMap = new HashMap<>();
                         hashMap.put("" + playerName, myScore);
-                        score.child("" + playerName).updateChildren(hashMap);
+                        score.child("" + playerName).child("" + nameP2).updateChildren(hashMap);
                     } else {
-                        score.child("" + playerName).child("" + nameP2).setValue(scoreP1);
+                        score.child("" + playerName).child("" + nameP2).child("" + playerName).setValue(scoreP1);
                     }
                 }
 

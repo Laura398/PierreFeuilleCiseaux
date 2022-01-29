@@ -2,6 +2,7 @@ package com.example.pierrefeuilleciseaux;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -29,52 +30,48 @@ public class MainActivity8 extends AppCompatActivity {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String playerName = prefs.getString("playerName", null);
+        String otherNumber = prefs.getString("otherNumber", null);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pierre-feuille-ciseaux-a00d3-default-rtdb.europe-west1.firebasedatabase.app/");
         DatabaseReference score = database.getReference("Score");
+        DatabaseReference other = database.getReference("" + otherNumber);
 
-        String objectTest = score.child("" + playerName).get().toString();
-        TextView title = findViewById(R.id.title);
-        title.setText(objectTest);
-;
-        score.addListenerForSingleValueEvent(new ValueEventListener() {
+        other.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                String nameP2 = dataSnapshot.child("1").getValue(String.class);
 
-                String object = dataSnapshot.child("" + playerName).getValue().toString();
+                score.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange (DataSnapshot dataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+                        String scoreP1 = dataSnapshot.child("" + playerName).child("" + nameP2).child("" + playerName).getValue().toString();
+                        String scoreP2 = dataSnapshot.child("" + nameP2).child("" + playerName).child("" + nameP2).getValue().toString();
 
-                String getArrayInStringArray1 = object.split("\\{")[1];
-                String getArrayInStringArray2 = getArrayInStringArray1.split("\\}")[0];
+                        TextView nameP1View = findViewById(R.id.nameP1);
+                        nameP1View.setText(playerName);
+                        TextView nameP2View = findViewById(R.id.nameP2);
+                        nameP2View.setText(nameP2);
+                        TextView scoreP1View = findViewById(R.id.scoreP1);
+                        scoreP1View.setText(scoreP1);
+                        TextView scoreP2View = findViewById(R.id.scoreP2);
+                        scoreP2View.setText(scoreP2);
+                    }
 
-                String data[] = getArrayInStringArray2.split(", ");
-
-
-
-                for (int i=0; i < data.length; i++)
-                {
-                    TextSwitch ts = new TextSwitch();
-                    String[] getOneTest = data[i].split("=");
-                    String object2 = dataSnapshot.child("" + getOneTest[0]).child("" + playerName).getValue().toString();
-                    ts.setText(playerName + getOneTest[1] + getOneTest[0] + object2);
-                    tsList.add(ts);
-                    TextView title = findViewById(R.id.title);
-                    title.setText(playerName + getOneTest[1] + getOneTest[0] + object2);
-                }
-
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        Log.w("APPX", "Failed to read value.", error.toException());
+                    }
+                });
 
 
 
 
 
-                // Iterable otherPlayerNames =
 
-                //for (Object otherPlayerName : object) {
-                //    Integer playerScore = dataSnapshot.child("" + playerName).child("" + otherPlayerName).child("" + playerName).getValue(Integer.class);
-                //    Integer otherScore = dataSnapshot.child("" + otherPlayerName).child("" + playerName).child("" + otherPlayerName).getValue(Integer.class);
-                //    TextSwitch ts = new TextSwitch();
-                //    ts.setText(playerName + " " + playerScore.toString() + " - " + otherScore.toString() + " " + otherPlayerName.toString());
-                //    tsList[0].add(ts);
-                //}
+
 
 
 
@@ -86,10 +83,6 @@ public class MainActivity8 extends AppCompatActivity {
                 Log.w("APPX", "Failed to read value.", error.toException());
             }
         });
-
-        ListView list = findViewById(R.id.listview);
-        list.setAdapter(adapter[0]);
-
 
 
 
